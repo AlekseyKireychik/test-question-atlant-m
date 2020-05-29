@@ -1,23 +1,31 @@
 window.onload = () => { 
 
-    const btnStart = document.getElementById('btnStart');
-    const bannerStart = document.getElementById('bannerStart');
-    const questions = document.getElementById('questions');
-    const bannerEnd = document.getElementById('bannerEnd');
-    const btnResult = document.getElementById('formBtnResutl');
-    const resultFild = document.getElementById('resultFild');
+    const btnStart = document.getElementById('btnStart'),
+        bannerStart = document.getElementById('bannerStart'),
+        questions = document.getElementById('questions'),
+        bannerEnd = document.getElementById('bannerEnd'),
+        btnResult = document.getElementById('formBtnResutl'),
+        resultFild = document.getElementById('resultFild');
 
-    btnStart.addEventListener('click', () => {
+    btnStart.addEventListener('click', (e) => {
+
+        if (e.target) {
+              e.preventDefault()    
+        };
 
         bannerStart.style.display = "none";
-        questions.style.display = "block";
-
+        questions.style.display = "block";  
     });
 
-    btnResult.addEventListener('click', () => {
+    btnResult.addEventListener('click', (e) => {
 
-        const countQuestions = document.querySelectorAll(".questions__item li");
-        const resultedInputs = document.querySelectorAll("input[type='radio']:checked");
+        if (e.target) {
+            e.preventDefault()    
+        };
+
+        const countQuestions = document.querySelectorAll(".questions__item li"),
+            resultedInputs = document.querySelectorAll("input[type='radio']:checked");
+            
         let result = 0;
 
         if (countQuestions.length === resultedInputs.length){
@@ -40,7 +48,12 @@ window.onload = () => {
             questions.append(popup);
 
             const btnClose = document.getElementById('btnClose');
-            btnClose.addEventListener('click', () => {
+            btnClose.addEventListener('click', (e) => {
+
+                if (e.target) {
+                    e.preventDefault()    
+                };
+
                 popup.remove();
             });
         };
