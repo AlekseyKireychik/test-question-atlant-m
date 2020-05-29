@@ -154,6 +154,7 @@ input[type="radio"]:checked + label:after {
 }
 .banner__end {
     background-image: url(../img/bgpageend.jpg);
+    display: none;
 }
 
 .caption {
@@ -260,6 +261,33 @@ input[type="radio"]:checked + label:after {
     text-align: center;
     margin: 50px auto 40px;
 }
-#banner__end {
-    display: none;
+.popup{ 
+    position: absolute;
+    top: -76px;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    background: #f2f2f2;  
+}
+.popup__content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px 15px;
+    background-color: #fff;
+    z-index: 99;
+    text-align: center;
+}
+.popup p {
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: #525252;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    
 }

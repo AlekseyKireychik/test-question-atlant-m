@@ -1,31 +1,31 @@
-window.onload = function (){ 
+window.onload = () => { 
 
     const btnStart = document.getElementById('btnStart');
-    const banner__start = document.getElementById('banner__start');
+    const bannerStart = document.getElementById('bannerStart');
     const questions = document.getElementById('questions');
-    const banner__end = document.getElementById('banner__end');
+    const bannerEnd = document.getElementById('bannerEnd');
     const btnResult = document.getElementById('formBtnResutl');
     const resultFild = document.getElementById('resultFild');
 
-    btnStart.addEventListener('click', function(){
+    btnStart.addEventListener('click', () => {
 
-        banner__start.style.display = "none";
+        bannerStart.style.display = "none";
         questions.style.display = "block";
 
     });
 
-    btnResult.addEventListener('click', function(){
+    btnResult.addEventListener('click', () => {
 
         const countQuestions = document.querySelectorAll(".questions__item li");
         const resultedInputs = document.querySelectorAll("input[type='radio']:checked");
         let result = 0;
 
         if (countQuestions.length === resultedInputs.length){
-            
+
             questions.style.display = "none";
-            banner__end.style.display = "block";
+            bannerEnd.style.display = "block";
     
-            Array.prototype.map.call(resultedInputs, (el)=>{
+            Array.prototype.map.call(resultedInputs, (el) => {
                 result += parseInt(el.dataset.value);
             });
     
@@ -33,9 +33,16 @@ window.onload = function (){
             resultFild.innerHTML = `Вы набрали ${resultSchow} баллов`;
 
         } else {
+            const popup = document.createElement('div');
+            popup.className = "popup";
+            popup.innerHTML = "<div class='popup__content'><p>Вы ответили не на все вопросы</p><button class='btn' id='btnClose'>Продолжить</button></div>";
+            
+            questions.append(popup);
 
-            alert("Вы ответили не на все вопросы");
-
+            const btnClose = document.getElementById('btnClose');
+            btnClose.addEventListener('click', () => {
+                popup.remove();
+            });
         };
         
     });
